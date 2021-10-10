@@ -2,26 +2,21 @@
 #define ANALYTIC_FUNCTION_H_INCLUDDED
 
 #include "log.h"
+#include "macro.h"
 
 #include <string>
 #include <utility>
 #include <cmath>
 #include <cstdlib>
-#include <cassert>
 #include <functional>
 
-namespace CMath {
+namespace cmath {
 
-#define ASSERT(a) assert(a)
-#define FAILURE(msg) { \
-    LOG(ERROR, msg);  \
-    failed_ = true;    \
+#define FAILURE(msg) {  \
+    LOG(ERROR, msg);    \
+    failed_ = true;     \
 }
-#define UNREACHABLE(a) { \
-    LOG(ERROR, "UNREACHABLE CODE: " a);  \
-    ASSERT(false);                      \
-    __builtin_unreachable();\
-}
+
 const size_t MAX_OPS = 10u;
 
 
@@ -117,14 +112,19 @@ public:
     bool        IsOperandOf(const AFunction &other) const;
     bool        IsConst() const;
     bool        IsValid() const;
-    void        SetType(Element type) {
+    void        SetType(Element type)
+    {
         LOG(DEBUG, "setting type" << (int) type);
         type_ = type;
     }
 
+    field_t GetNum() const
+    {
+        return num_;
+    }
 
-    friend std::ostream& operator<<(std::ostream& ou, CMath::AFunction& func);
-    friend std::ostream& operator<<(std::ostream& ou, CMath::AFunction::Element type);
+    friend std::ostream& operator<<(std::ostream& ou, cmath::AFunction& func);
+    friend std::ostream& operator<<(std::ostream& ou, cmath::AFunction::Element type);
 
 private:
     // mul or sum terms or function argument:
@@ -135,6 +135,6 @@ private:
     
 };
 
-} // namespace CMath
+} // namespace cmath
 
 #endif //ANALYTIC_FUNCTION_H_INCLUDDED

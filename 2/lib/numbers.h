@@ -12,6 +12,10 @@ public:
     {
         return val_;
     }
+    operator=(NUMBER_TYPE val)
+    {
+        val_ = val;
+    }
 private:
     NUMBER_TYPE val_{0};
 };

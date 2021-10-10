@@ -1,6 +1,6 @@
 #include "analytic_function.h"
 
-namespace CMath {
+namespace cmath {
 
 char AFunction::Parse::GetNullChar(AFunction &func) {
     func = GetSum();
@@ -657,7 +657,7 @@ std::ostream& operator<<(std::ostream& ou, AFunction& func) {
     ou << prefix << "type_:      "<< func.type_ << '\n';
     ou << prefix << "num_:      "<< func.num_<< '\n';
     ou << prefix << "noperands_: "<< func.noperands_ << '\n';
-    ou << prefix << "operands_: " << '\n';
+    ou << prefix << "operands_(" << func.operands_ << "): " << '\n';
     for (size_t i = 0; i < func.noperands_; i++) {
         ou << func.operands_[i];
     }
@@ -681,4 +681,4 @@ std::ostream& operator<< ( std::ostream& ou, AFunction::Element type)
     UNREACHABLE();
 }
 
-} // namespace CMath
+} // namespace cmath
