@@ -122,9 +122,11 @@ public:
     {
         return num_;
     }
+    void Dump(std::ostream *out);
+    void DumpOperands(std::ostream *out, char binop);
 
-    friend std::ostream& operator<<(std::ostream& ou, cmath::AFunction& func);
-    friend std::ostream& operator<<(std::ostream& ou, cmath::AFunction::Element type);
+    friend std::ostream& operator<<(std::ostream &ou, cmath::AFunction &func);
+    friend std::ostream& operator<<(std::ostream &ou, cmath::AFunction::Element type);
 
 private:
     // mul or sum terms or function argument:

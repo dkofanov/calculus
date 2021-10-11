@@ -7,7 +7,7 @@ using namespace cmath;
 
 int main() {
     constexpr size_t n = 3;
-    Matrix<n, n, MatrixType::COLUMN_BASED, AFunction> m;
+    Matrix<n, n, MatrixType::ROW_BASED, AFunction> m;
     for (size_t i = 0; i < n; i++) {
         m(i, 1) = AFunction("3.14");
     }
@@ -17,12 +17,10 @@ int main() {
         m(i, 2) = AFunction(formula.str());
     }
 
+    Vector<n, AFunction> v;
     for (size_t i = 0; i < n; i++) {
-        for (size_t j = 0; j < n; j++) {
-            std::cout << m(i, j) << " ";
-        }
-        std::cout << std::endl;
+        v(i) = AFunction("22.8");
     }
-
+    m.SolveGauss(v);
     return 0;
 }

@@ -648,8 +648,60 @@ bool AFunction::Optimize() {
     return optimizable;
 }
 
+void AFunction::Dump(std::ostream *out)
+{
+    switch (type_) {
+        case Element::VAR:
+            (*out) << "x";
+            break;
+        case Element::PARAM:
+            (*out) << "a";
+            break;
+        case Element::CONST:
+            (*out) << num_;
+            break;
+        case Element::SUM:
+            (*out) << '(';
+            if (num_ != 0) {
+                (*out) << num_ << " + ";
+            }
+            DumpOperands(out, '+');
+            (*out) << ')';
+            break;
+        case Element::MUL:
+            (*out) << '(';
+            if (num_ == -1) {
+                (*out) << '-';
+            } else if (num_ != 1) {
+                (*out) << num_;
+            }
+            DumpOperands(out, '*');
+            (*out) << ')';
+            break;
+        case Element::INVTOK:
+            (*out) << "invtok";
+            break;
+        default:
+            UNREACHABLE();
+    }
+}
+
+void AFunction::DumpOperands(std::ostream *out, char binop)
+{
+    ASSERT(noperands_ > 0);
+    ASSERT(operands_ != nullptr);
+    operands_[0].Dump(out);
+    for (size_t i = 1; i < noperands_; i++) {
+        (*out) << ' ' << binop << ' ';
+        operands_[i].Dump(out);
+    }
+}
 
 std::ostream& operator<<(std::ostream& ou, AFunction& func) {
+    func.Dump(&ou);
+/**
+ * Debug dump:
+ *
     static std::string prefix = "";
     prefix += '\t';
     prefix += '|';
@@ -666,6 +718,7 @@ std::ostream& operator<<(std::ostream& ou, AFunction& func) {
         prefix.erase(prefix.size() - 1);
         prefix.erase(prefix.size() - 1);
     }
+ */
     return ou;
 }
 
