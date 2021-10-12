@@ -118,6 +118,29 @@ public:
         type_ = type;
     }
 
+    /**
+     * Implicit casts of Element::CONST to number:
+     */
+    AFunction(field_t val)
+    {
+        type_ = Element::CONST;
+        num_ = val;
+    }
+
+    operator field_t() const
+    {
+        ASSERT(type_ == Element::CONST);
+        return num_;
+    }
+    field_t operator=(field_t val)
+    {
+        delete [] operands_;
+        operands_ = nullptr;
+        noperands_ = 0;
+        type_ = Element::CONST;
+        return num_ = val;
+    }
+
     field_t GetNum() const
     {
         return num_;

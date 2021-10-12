@@ -1,5 +1,9 @@
+#ifndef LIB_LOG_H_INCLUDED
+#define LIB_LOG_H_INCLUDED
+
 #include <iostream>
 #define NDEBUG
+#define NDEBUG_MATRIX
 enum LogType {
     ERROR,
     INFO,
@@ -16,3 +20,15 @@ enum LogType {
         std::cerr << "ERROR : " << message << std::endl;    \
 }
 #endif
+
+#ifndef NDEBUG_MATRIX
+#define LOG_MATRIX(type, message) \
+	std::cerr << #type << " : " << message << std::endl;
+#else
+#define LOG_MATRIX(type, message) {                \
+    if (type == ERROR)                      \
+        std::cerr << "ERROR : " << message << std::endl;    \
+}
+#endif
+
+#endif  // LIB_LOG_H_INCLUDED
