@@ -145,6 +145,7 @@ public:
     {
         return num_;
     }
+
     void Dump(std::ostream *out);
     void DumpOperands(std::ostream *out, char binop);
 

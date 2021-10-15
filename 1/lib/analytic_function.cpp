@@ -303,6 +303,8 @@ AFunction* AFunction::AllocateOperands(size_t n) {
 }
 
 bool AFunction::IsConst() const {
+    ASSERT(operands_ == nullptr);
+    ASSERT(noperands_ == 0);
     return type_ == AFunction::Element::CONST;
 }
 
@@ -420,7 +422,9 @@ AFunction::AFunction(const AFunction &src) {
     type_ = src.type_;
     num_ = src.num_;
     noperands_ = src.noperands_;
-    AllocateOperands(MAX_OPS);
+    if (noperands_ > 0) {
+        AllocateOperands(MAX_OPS);
+    }
     for (size_t i = 0; i < src.noperands_; i++) {
         LOG(DEBUG, "copying operands_[" << i << "]...");
         operands_[i] = src.operands_[i];
@@ -436,7 +440,9 @@ AFunction& AFunction::operator=(const AFunction &src) {
     type_ = src.type_;
     num_ = src.num_;
     noperands_ = src.noperands_;
-    AllocateOperands(MAX_OPS);
+    if (noperands_ > 0) {
+        AllocateOperands(MAX_OPS);
+    }
     for (size_t i = 0; i < src.noperands_; i++) {
         LOG(DEBUG, "copying operands_[" << i << "]...");
         operands_[i] = src.operands_[i];

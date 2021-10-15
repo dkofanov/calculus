@@ -28,6 +28,8 @@ enum LogType {
 #define LOG_MATRIX(type, message) {                \
     if (type == ERROR)                      \
         std::cerr << "ERROR : " << message << std::endl;    \
+    if (type == INFO)                      \
+        std::cout << "INFO : " << message << std::endl;    \
 }
 #endif
 
