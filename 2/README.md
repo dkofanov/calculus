@@ -1,68 +1,7 @@
 ## Solve system of equations:
-<img src="https://render.githubusercontent.com/render/math?math=Au = f; \\ A = a_{ij} = \begin{cases} 1 , \ \ \ \ \ \ i = j,\\\frac{1}{i^2 + j}, \ i \neq j;\end{cases}\\ f_i = 1/i \\ \ \ \ \ \ i,j = 1 .. 12; \end{comment}">
-
+![image](https://user-images.githubusercontent.com/43926546/137639492-4c1ed2f4-8323-4570-98a2-dc8753f407cc.png)
 ### Gauss elimination:
-$$
-u = 
-\begin{bmatrix}
-0.75537
-\\
-0.2388
-\\
-0.178903
-\\
-0.15087
-\\
-0.131709
-\\
-0.117033
-\\
-0.105271
-\\
-0.0956054
-\\
-0.0875217
-\\
-0.0806659
-\\
-0.074783
-\\
-0.0696832
-\end{bmatrix};
-\\
-residual = ||Au - f|| = 1.11022e-16;
-$$
+![image](https://user-images.githubusercontent.com/43926546/137639484-ebe108b7-1dd1-43fc-b2be-d53f7cdf9b6f.png)
 
 ### Simple iterations:
-$$
-u = 
-\begin{bmatrix}
-0.75537
-\\
-0.2388
-\\
-0.178903
-\\
-0.15087
-\\
-0.131709
-\\
-0.117033
-\\
-0.105271
-\\
-0.0956054
-\\
-0.0875217
-\\
-0.0806659
-\\
-0.074783
-\\
-0.0696832
-\end{bmatrix};
-\\
-residual = ||Au - f|| = 5.55112e-17;
-\\
-iterations = 117;
-$$
+![image](https://user-images.githubusercontent.com/43926546/137639488-0805d631-86dc-4523-9304-851f3a71d6a2.png)
