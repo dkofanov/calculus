@@ -2,7 +2,7 @@
 #define LIB_LOG_H_INCLUDED
 
 #include <iostream>
-#define NDEBUG
+// #define NDEBUG
 #define NDEBUG_MATRIX
 enum LogType {
     ERROR,

@@ -163,4 +163,4 @@ private:
 
 } // namespace cmath
 
-#endif //ANALYTIC_FUNCTION_H_INCLUDDED
+#endif // ANALYTIC_FUNCTION_H_INCLUDDED
