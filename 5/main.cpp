@@ -36,13 +36,13 @@ int main() {
 
     step = 1;
     std::cout << "-----------------------------\n";
-    std::cout << "Trapezoid method (step_multiplier = " << step << "):" << std::endl;
+    std::cout << "Trapezoidal rule (grid multiplier = " << step << "):" << std::endl;
     field_t tr_1 = comp.GetTrapezoid(step);
     std::cout << " I1 = " << tr_1 << std::endl;
 
     step = 2;
     std::cout << "-----------------------------\n";
-    std::cout << "Trapezoid method (step_multiplier = " << step << "):" << std::endl;
+    std::cout << "Trapezoidal rule (grid multiplier = " << step << "):" << std::endl;
     field_t tr_2 = comp.GetTrapezoid(step);
     std::cout << " I2 = " << tr_2 << std::endl;
 
@@ -54,7 +54,7 @@ int main() {
     std::cout << " I = " << tr_1 + chp << std::endl;
 
     std::cout << "-----------------------------\n";
-    std::cout << "Simpson method:" << std::endl;
+    std::cout << "Simpson's rule:" << std::endl;
     field_t simpson = comp.GetSimpson();
     std::cout << " Is = " << simpson << std::endl;
 
