@@ -32,10 +32,13 @@ public:
     , epsilon_(epsilon) {}
 
     virtual field_t Solve() override;
+    size_t GetItersN() {
+        return iters_n_;
+    }
 
 private:
     AFunction contractor_{};
-    size_t n_iters_{0};
+    size_t iters_n_{0};
     field_t min_{0};
     field_t max_{0};
     field_t epsilon_{0};
@@ -49,9 +52,9 @@ field_t SimpleIterationsSolver::Solve() {
 
     ASSERT(std::abs(contraction.Eval(x_cur)) < 1.);
     field_t x_next = contractor_.Eval(x_cur);
-    n_iters_ = 1;
+    iters_n_ = 1;
     while (std::abs(x_cur - x_next) > epsilon_) {
-        n_iters_++;
+        iters_n_++;
         x_cur = x_next;
         ASSERT(std::abs(contraction.Eval(x_cur)) < 1.);
         x_next = contractor_.Eval(x_cur);

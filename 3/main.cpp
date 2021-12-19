@@ -29,8 +29,8 @@ int main() {
     std::cout << "-----------------------------\n";
     std::cout << "Full width at half maximum:\n";
     std::cout.precision(3);
-    std::cout << std::fixed << "x1 = " << x1 << std::endl;
-    std::cout << "x2 = " << x2 << std::endl;
-    std::cout << "dx = " << x2 - x1 << std::endl;
+    std::cout << std::fixed << "x1 = " << x1 << ", iters_n_ = " << solver_1.GetItersN() << std::endl;
+    std::cout << std::fixed << "x2 = " << x2 << ", iters_n_ = " << solver_2.GetItersN() << std::endl;
+    std::cout << std::fixed << "dx = " << x2 - x1 << std::endl;
     return 0;
 }

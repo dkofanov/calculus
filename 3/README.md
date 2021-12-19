@@ -8,8 +8,9 @@
 ![image](https://user-images.githubusercontent.com/43926546/146692818-6f1351e5-1d9b-4c6b-ac6f-39f7dfca8fe5.png)
 ![image](https://user-images.githubusercontent.com/43926546/146692810-2b4abab9-895a-4736-aedc-02addb2cdd1c.png)
 
-### Solution (eps = 0.001):
-![image](https://user-images.githubusercontent.com/43926546/146692870-b1344420-b15e-4b8b-a0a6-bb53c45b359e.png)
+### Solution (epsilon = 0.001):
+![image](https://user-images.githubusercontent.com/43926546/146693035-bad8c24e-3f50-4ea5-b7f9-38faa4716d30.png)
+
 
 
 
