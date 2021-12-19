@@ -5,7 +5,7 @@
 
 using namespace cmath;
 
-
+// VII.9.5(b):
 std::vector<field_t> X_TBL = {
     0.,
     0.125,
@@ -17,7 +17,6 @@ std::vector<field_t> X_TBL = {
     0.875,
     1.
 };
-
 std::vector<field_t> Y_TBL = {
     0.000000,
     0.021470,

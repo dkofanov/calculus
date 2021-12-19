@@ -2,7 +2,7 @@
 #define LIB_LOG_H_INCLUDED
 
 #include <iostream>
-// #define NDEBUG
+#define NDEBUG_LOG
 #define NDEBUG_MATRIX
 enum LogType {
     ERROR,
@@ -11,7 +11,7 @@ enum LogType {
     EVAL
 };
 
-#ifndef NDEBUG
+#ifndef NDEBUG_LOG
 #define LOG(type, message) \
 	std::cerr << #type << " : " << message << std::endl;
 #else

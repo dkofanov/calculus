@@ -60,6 +60,8 @@ loop_break:
         ASSERT(func.operands_ != nullptr);
         func.operands_[0] = std::move(term0);
 
+        func.noperands_ = i;
+        func.SetType(AFunction::Element::SUM);
         can_eval *= func.operands_[0].IsConst();
         if (can_eval) {
             LOG(DEBUG, "pre-evaluating sum..");
@@ -67,10 +69,7 @@ loop_break:
             temp.SetType(AFunction::Element::CONST);
             temp.num_ = func.Eval(0);
             func = std::move(temp);
-        } else {
-            func.noperands_ = i;
-            func.SetType(AFunction::Element::SUM);
-        }
+        }            
     }
     LOG(DEBUG, "sum found");
     return func;
@@ -303,9 +302,12 @@ AFunction* AFunction::AllocateOperands(size_t n) {
 }
 
 bool AFunction::IsConst() const {
-    ASSERT(operands_ == nullptr);
-    ASSERT(noperands_ == 0);
-    return type_ == AFunction::Element::CONST;
+    if (type_ == AFunction::Element::CONST) {
+        ASSERT(operands_ == nullptr);
+        ASSERT(noperands_ == 0);
+        return true;
+    }
+    return false;
 }
 
 bool AFunction::IsValid() const {
@@ -336,7 +338,7 @@ AFunction AFunction::Differentiate() const {
                 ans.operands_[i].num_ = 1;
                 ans.operands_[i].AllocateOperands(noperands_);
                 ans.operands_[i].noperands_ = noperands_;
-                ans.operands_[i] = operands_[i].Differentiate();
+                ans.operands_[i].operands_[i] = operands_[i].Differentiate();
                 for (size_t j = 0; j < noperands_; j++) {
                     if (j != i) {
                         ans.operands_[i].operands_[j] = operands_[j];
@@ -683,6 +685,24 @@ void AFunction::Dump(std::ostream *out)
             }
             DumpOperands(out, '*');
             (*out) << ')';
+            break;
+        case Element::EXP:
+            (*out) << "exp(";
+            ASSERT(noperands_ == 1);
+            DumpOperands(out, ' ');
+            (*out) << ")";
+            break;
+        case Element::POW:
+            (*out) << "pow(";
+            ASSERT(noperands_ == 1);
+            DumpOperands(out, ' ');
+            (*out) << ", " << num_ << ")";
+            break;
+        case Element::LN:
+            (*out) << "ln(";
+            ASSERT(noperands_ == 1);
+            DumpOperands(out, ' ');
+            (*out) << ")";
             break;
         case Element::INVTOK:
             (*out) << "invtok";

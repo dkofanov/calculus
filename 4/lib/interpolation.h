@@ -83,8 +83,6 @@ std::string Interpolator::GetLagrangeTermString(size_t i) {
     return term.str();
 }
 
-
-
 }  // namespace cmath
 
 #endif  // NUMERICAL_INTEGRATION_H_INCLUDDED
